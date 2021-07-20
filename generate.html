@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <h1>Api Template</h1>
+    <p>Generate your own api</p>
+
+    
+    <code id="template-api">
+
+    </code>
+</body>
+
+</html>
+
+<script>
+    const httpGet = async (theUrl) => {
+        return new Promise((resolve, reject) => {
+            const xmlHttp = new XMLHttpRequest()
+            xmlHttp.onreadystatechange = () => {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    resolve(xmlHttp.responseText)
+            }
+            xmlHttp.open("GET", theUrl, true) // true for asynchronous 
+            xmlHttp.send(null)
+        })
+    }
+
+    const replaceSpecialChar = (str) => {
+        const breakTagLF = '<br>'
+        const breakTagTab =  '&nbsp'
+        return str.replace(/\n/g, breakTagLF).replace(/\t/g, breakTagTab)
+    }
+
+    (async () => {
+
+        const urlServer = "http://localhost:3000/api"
+        const responseGetApi = JSON.parse(await httpGet(urlServer))
+        const textCode = responseGetApi.text_code
+        const templateApi = document.getElementById('template-api')
+        templateApi.innerHTML = replaceSpecialChar(textCode)
+    })()
+</script>
