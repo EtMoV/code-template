@@ -77,4 +77,11 @@ app.get('/api', (req, res) => {
   })
 })
 
+app.post('/register_mail', (req, res) => {
+  const bodyContent = req.body
+  console.log(bodyContent)
+
+  res.sendStatus(200)
+})
+
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
