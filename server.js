@@ -15,51 +15,8 @@ app.use(express.urlencoded({
 
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 
-app.get('/api', (req, res) => {
-  const dataCreation = {
-    language: 'nodeJS',
-    port: '3000',
-    headers: {
-      accept: 'application/json',
-      cors: 'standard',
-    },
-    routes: [{
-      type: 'get',
-      url: 'book',
-      object: {
-        id: '1',
-        title: 'book test',
-        author: 'EtmoV',
-      },
-    },
-    {
-      type: 'post',
-      url: 'book',
-      object: {
-        id: '2',
-        title: 'book test',
-        author: 'EtmoV',
-      },
-    },
-    {
-      type: 'put',
-      url: 'book',
-      object: {
-        id: '1',
-        title: 'book test update',
-      },
-    },
-    {
-      type: 'delete',
-      url: 'book',
-      object: {
-        id: '1',
-      },
-    },
-    ],
-  }
-
-  // req.body
+app.post('/api', (req, res) => {
+  const dataCreation = req.body
 
   const headersApi = apiService.checkHeadersParam(dataCreation.headers)
 

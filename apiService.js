@@ -66,7 +66,7 @@ const apiService = {
     let code
 
     switch (lang) {
-      case 'nodeJS':
+      case 'nodejs':
         code = nodejsCodeService.generate(port, headerParam, routeParam)
         break
       default:
