@@ -1,9 +1,17 @@
 .template-code{
     overflow: overlay;
-    height: 32em;
+    height: 31em;
 }
 
 .form-template{
     overflow: overlay;
     height: 28em;
+}
+
+#tutorial-install-template, #btn-copy{
+    display: none;
+}
+
+#btn-copy{
+    cursor: pointer;
 }
